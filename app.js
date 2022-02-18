@@ -26,11 +26,13 @@ const user4 = {
     pass: 1234
 }
 
-const users = [user1, user2, user3, user4]
+const allUsers = [user1, user2, user3, user4]
 
 
 // ELEMENTS
 const containerTransactions = document.querySelector('.history__transactions');
+const currentBalance = document.querySelector('.balance');
+const iconAng = `<img class="icon" src="img/icon.svg">`
 
 
 
@@ -50,4 +52,25 @@ const displayTransfers = function(transfers) {
     })
 }
 
-displayTransfers(user1.transfers)
+displayTransfers(user1.transfers);
+
+
+const createUserLogin = function(accUser) {
+    accUser.forEach(function(usr) {
+        usr.username = usr.user.toLowerCase().split(' ').map
+     (name => name[0]).join('');
+    });
+
+}
+
+createUserLogin(allUsers);
+
+
+// Current Balance
+
+const displayBalance = function(transfers) {
+    const balance = transfers.reduce((acc ,transf) => acc + transf, 0);
+    currentBalance.innerHTML = `${balance} ${iconAng}`;
+};
+
+displayBalance(user1.transfers)
