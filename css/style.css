@@ -79,7 +79,8 @@ nav input {
     justify-content: center;
     flex-wrap: wrap-reverse;
     gap: 2rem;
-    margin: 3rem auto
+    margin: 3rem auto;
+    transition: all .5s;
 }
 
 /* History Transactions */
@@ -108,16 +109,18 @@ nav input {
     gap: 0.2rem;
 }
 
-.type__in {
+.type__deposit {
     background-color: var(--color-in);
     padding: 0.4rem 0.7rem;
     border-radius: 0.6rem;
+    text-transform: uppercase;
 }
 
-.type__out {
+.type__withdrawal {
     background-color: var(--color-out);
     padding: 0.4rem 0.7rem;
     border-radius: 0.6rem;
+    text-transform: uppercase;
 }
 
 /* Summary */
