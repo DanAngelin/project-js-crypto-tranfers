@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>AngHODL - Crypto</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2>Login in to get started</h2>
+            <div class="logo">
+                <img src="img/logo.png" >
+            </div>
+            <div class="login__form">
+                <input type="text" placeholder="user">
+                <input type="password" name="" id="" placeholder="pass">
+                <button>&#10149;</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="info">
+        <h2>For Educational Purposes Only</h2>
+        <h3>What is on this website is fictional</h3>
+
+    </section>
+
+
+    <section class="current__balance">
+        <div class="text__balance">
+            <h3>Current balance</h3>
+            <p class="date">As of 17/02/2022</p>
+        </div>
+        <h3 class="balance">0000<img class="icon" src="img/icon.svg"></h3>
+    </section>
+
+    <main class="app">
+
+        <!-- History Transactions -->
+        <div class="section__i">
+            <div class="history__transactions">
+                <div class="history__row">
+                    <div class="history__type type__in">1 DEPOSIT</div>
+                    <div class="history__date">2 DAYS AGO</div>
+                    <div class="history__value">34 <img class="icon" src="img/icon.svg"></div>
+                </div>
+                <div class="history__row">
+                    <div class="history__type type__out">1 WITHDRAWAL</div>
+                    <div class="history__date">10/02/2022</div>
+                    <div class="history__value">-12 <img class="icon" src="img/icon.svg"></div>
+                </div>
+            </div>
+
+
+            <!-- Summary -->
+            <div class="summary">
+                <div class="summary_label">In</div>
+                <div class="summary_value value__in">000 <img class="icon" src="img/icon.svg"></div>
+                <div class="summary_label">Out</div>
+                <div class="summary_value value__out">000 <img class="icon" src="img/icon.svg"></div>
+            </div>
+        </div>
+
+
+        <!-- Operations -->
+        <div class="section_ii">
+            <div class="operation operation__transfer">
+                <h3>Transfer AngHODL <img class="icon" src="img/icon.svg"></h3>
+                <form>
+                    <input type="text" class="form__input form__to">
+                    <label>Transfet to</label>
+                    <input type="number" class="form__input form__value">
+                    <label>Amount</label><br>
+                    <button class="btn__transfer">&#10149;</button>
+                </form>
+            </div>
+
+            <!-- ADD -->
+            <div class="section_ii">
+                <div class="operation operation__add">
+                    <h3>Add AngHODL <img class="icon" src="img/icon.svg"></h3>
+                    <form>
+                        <input type="number" class="form__input form__value">
+                        <label>Amount</label><br>
+                        <button class="btn__transfer">&#10149;</button>
+                    </form>
+                </div>
+
+            <!-- Close Account -->
+            <div class="operation operation__close">
+                <h3>Close account</h3>
+                <form>
+                    <input type="text" class="form__input form__to">
+                    <label>Confirm user</label>
+                    <input type="password" class="form__input form__value">
+                    <label>Confirm pass</label><br>
+                    <button class="btn__transfer">&#10149;</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
