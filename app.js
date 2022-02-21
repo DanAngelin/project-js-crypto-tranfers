@@ -42,6 +42,9 @@ const labelWelcome = document.querySelector('.welcome__message');
 const appUi = document.querySelector('.app');
 const valueIn = document.querySelector('.value__in');
 const valueOut = document.querySelector('.value__out');
+const inputTransferTo = document.querySelector('.form__to');
+const inputTransferAmount = document.querySelector('.form__value--amount');
+const btnTrasferrTo = document.querySelector('.btn__transfer--to');
 
 
 
@@ -76,9 +79,9 @@ createUserLogin(allUsers);
 
 // Current Balance
 
-const displayBalance = function(transfers) {
-    const balance = transfers.reduce((acc ,transf) => acc + transf, 0);
-    currentBalance.innerHTML = `${balance} ${iconAng}`;
+const displayBalance = function(acc) {
+    acc.balance = acc.transfers.reduce((acc ,transf) => acc + transf, 0);
+    currentBalance.innerHTML = `${acc.balance} ${iconAng}`;
 };
 
 // Calc summary
@@ -92,6 +95,16 @@ const calcSummary = function (transfers) {
     
 }
 
+const updateUI = function(user) {
+    // Display transfers
+    displayTransfers(user.transfers);
+
+    // Display balance
+    displayBalance(user);
+
+    // Display summary
+    calcSummary(user.transfers)
+}
 
 let currentUser;
 
@@ -113,12 +126,23 @@ btnLogin.addEventListener('click', function(e) {
     inputUser.value = inputPass.value = '';
     inputPass.blur();
 
-    // Display transfers
-    displayTransfers(currentUser.transfers);
+    updateUI(currentUser);
 
-    // Display balance
-    displayBalance(currentUser.transfers);
+});
 
-    // Display summary
-    calcSummary(currentUser.transfers)
+
+// Transfer between users
+btnTrasferrTo.addEventListener('click', function(e) {
+    e.preventDefault();
+    const amount = +(inputTransferAmount.value);
+    const receiverUser = allUsers.find(user => user.username === inputTransferTo.value);
+    inputTransferAmount.value = inputTransferTo.value = '';
+
+    if(amount > 0 && receiverUser && currentUser.balance >= amount && receiverUser?.username !==
+        currentUser.username) {
+         currentUser.transfers.push(-amount);
+         receiverUser.transfers.push(amount);
+
+         updateUI(currentUser);
+    }
 })
