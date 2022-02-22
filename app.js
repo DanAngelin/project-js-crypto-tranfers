@@ -45,14 +45,20 @@ const valueOut = document.querySelector('.value__out');
 const inputTransferTo = document.querySelector('.form__to');
 const inputTransferAmount = document.querySelector('.form__value--amount');
 const btnTrasferrTo = document.querySelector('.btn__transfer--to');
+const bntSort = document.querySelector('.btn__sort');
+const btnAdd = document.querySelector('.btn__add');
+const inputAdd = document.querySelector('.form__value--add');
 
 
 
 
-const displayTransfers = function(transfers) {
+const displayTransfers = function(transfers, sort = false) {
     containerTransactions.innerHTML = '';
 
-    transfers.forEach(function(transf, i) {
+    const transfSort = sort ? transfers.slice().sort((a, b) =>
+     a - b) : transfers;
+
+     transfSort.forEach(function(transf, i) {
         const type = transf > 0 ? 'deposit' : 'withdrawal';
 
         const html = `<div class="history__row">
@@ -145,4 +151,30 @@ btnTrasferrTo.addEventListener('click', function(e) {
 
          updateUI(currentUser);
     }
-})
+});
+
+// Sort Transfers
+let sorted = false;
+bntSort.addEventListener('click', function(e) {
+    e.preventDefault();
+    displayTransfers(currentUser.transfers, !sorted);
+    sorted = !sorted;
+});
+
+
+// Add Amount
+btnAdd.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const amount = +(inputAdd.value);
+
+    if(amount > 0 && currentUser.transfers.some(transf => transf >= amount * 0.5)) {
+        // Add transfer
+        currentUser.transfers.push(amount);
+
+        // Update
+        updateUI(currentUser);
+    }
+    inputAdd.value = '';
+});
+
