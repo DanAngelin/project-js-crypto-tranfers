@@ -27,7 +27,6 @@ const user4 = {
 }
 
 const allUsers = [user1, user2, user3, user4];
-console.log(allUsers)
 
 
 // ELEMENTS
@@ -131,10 +130,8 @@ btnLogin.addEventListener('click', function(e) {
     e.preventDefault();
 
     currentUser = allUsers.find(acc => acc.username === inputUser.value);
-    console.log(currentUser)
 
     if(currentUser?.pass === +(inputPass.value));
-    console.log('Login')
 
     // Display box with details and welcome message
     labelWelcome.textContent = `Welcome back, ${currentUser.user}`;
@@ -198,7 +195,6 @@ btnClose.addEventListener('click', function(e) {
 
     if(inputCloseUser.value === currentUser.username && +(inputClosePass.value) === currentUser.pass) {
         const index = allUsers.findIndex(user => user.username === currentUser.username)
-        console.log(index);
 
         // Delete user
         allUsers.splice(index, 1);
@@ -210,4 +206,70 @@ btnClose.addEventListener('click', function(e) {
     }
 
     inputCloseUser.value = inputClosePass.value = '';
-})
+});
+
+// Widget Top Crypto Price
+
+const pRank1 = document.querySelector('.rank_1');
+const rank1Logo = document.querySelector('.rank_1--logo');
+const rank1Name = document.querySelector('.rank_1--name');
+const rank1Price = document.querySelector('.rank_1--price');
+
+const pRank2 = document.querySelector('.rank_2');
+const rank2Logo = document.querySelector('.rank_2--logo');
+const rank2Name = document.querySelector('.rank_2--name');
+const rank2Price = document.querySelector('.rank_2--price');
+
+const pRank3 = document.querySelector('.rank_3');
+const rank3Logo = document.querySelector('.rank_3--logo');
+const rank3Name = document.querySelector('.rank_3--name');
+const rank3Price = document.querySelector('.rank_3--price');
+
+const pRank4 = document.querySelector('.rank_4');
+const rank4Logo = document.querySelector('.rank_4--logo');
+const rank4Name = document.querySelector('.rank_4--name');
+const rank4Price = document.querySelector('.rank_4--price');
+
+const pRank5 = document.querySelector('.rank_5');
+const rank5Logo = document.querySelector('.rank_5--logo');
+const rank5Name = document.querySelector('.rank_5--name');
+const rank5Price = document.querySelector('.rank_5--price');
+
+async function widget() {
+    const response = await fetch(`https://api.coinstats.app/public/v1/coins?skip=0&limit=5&currency=USD`);
+
+    const widgetCrypto = await response.json();
+
+    const { coins: [{rank: rank1, icon: logo1, name: name1, price: price1},
+                    {rank: rank2, icon: logo2, name: name2, price: price2},
+                    {rank: rank3, icon: logo3, name: name3, price: price3},
+                    {rank: rank4, icon: logo4, name: name4, price: price4},
+                    {rank: rank5, icon: logo5, name: name5, price: price5}] } = widgetCrypto
+
+    pRank1.textContent = `# ${rank1}`;
+    rank1Logo.innerHTML = `<img src="${logo1}" />`;
+    rank1Name.textContent = `${name1}`;
+    rank1Price.textContent = `${price1.toFixed(2)} $`;
+
+    pRank2.textContent = `${rank2}`;
+    rank2Logo.innerHTML = `<img src="${logo2}" />`;
+    rank2Name.textContent = `${name2}`;
+    rank2Price.textContent = `${price2.toFixed(2)} $`;
+
+    pRank3.textContent = `# ${rank3}`;
+    rank3Logo.innerHTML = `<img src="${logo3}" />`;
+    rank3Name.textContent = `${name3}`;
+    rank3Price.textContent = `${price3.toFixed(2)} $`;
+
+    pRank4.textContent = `# ${rank4}`;
+    rank4Logo.innerHTML = `<img src="${logo4}" />`;
+    rank4Name.textContent = `${name4}`;
+    rank4Price.textContent = `${price4.toFixed(2)} $`;
+
+    pRank5.textContent = `# ${rank5}`;
+    rank5Logo.innerHTML = `<img src="${logo5}" />`;
+    rank5Name.textContent = `${name5}`;
+    rank5Price.textContent = `${price5.toFixed(2)} $`;
+}
+
+widget()
