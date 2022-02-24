@@ -48,6 +48,10 @@ const btnTrasferrTo = document.querySelector('.btn__transfer--to');
 const bntSort = document.querySelector('.btn__sort');
 const btnAdd = document.querySelector('.btn__add');
 const inputAdd = document.querySelector('.form__value--add');
+const btnClose = document.querySelector('.btn__close');
+const inputCloseUser = document.querySelector('.form__close--user');
+const inputClosePass = document.querySelector('.form__close--pass');
+const labelDate = document.querySelector('.label__date')
 
 
 
@@ -114,6 +118,15 @@ const updateUI = function(user) {
 
 let currentUser;
 
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const year = now.getFullYear();
+const hour = `${now.getHours()}`.padStart(2, 0);
+const min = `${now.getMinutes()}`.padStart(2, 0);
+labelDate.textContent = `As of ${day}/${month}/${year}, ${hour}:${min}`;
+
+
 btnLogin.addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -178,3 +191,23 @@ btnAdd.addEventListener('click', function(e) {
     inputAdd.value = '';
 });
 
+
+// Close Account
+btnClose.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    if(inputCloseUser.value === currentUser.username && +(inputClosePass.value) === currentUser.pass) {
+        const index = allUsers.findIndex(user => user.username === currentUser.username)
+        console.log(index);
+
+        // Delete user
+        allUsers.splice(index, 1);
+
+        // Hide UI
+        appUi.style.opacity = 0;
+        containerBalance.style.opacity = 0;
+        labelWelcome.textContent = `Login in to get started`;
+    }
+
+    inputCloseUser.value = inputClosePass.value = '';
+})
