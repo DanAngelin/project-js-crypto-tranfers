@@ -239,37 +239,41 @@ async function widget() {
     const response = await fetch(`https://api.coinstats.app/public/v1/coins?skip=0&limit=5&currency=USD`);
 
     const widgetCrypto = await response.json();
+    try {
+        const { coins: [{rank: rank1, icon: logo1, name: name1, price: price1},
+                        {rank: rank2, icon: logo2, name: name2, price: price2},
+                        {rank: rank3, icon: logo3, name: name3, price: price3},
+                        {rank: rank4, icon: logo4, name: name4, price: price4},
+                        {rank: rank5, icon: logo5, name: name5, price: price5}] } = widgetCrypto
 
-    const { coins: [{rank: rank1, icon: logo1, name: name1, price: price1},
-                    {rank: rank2, icon: logo2, name: name2, price: price2},
-                    {rank: rank3, icon: logo3, name: name3, price: price3},
-                    {rank: rank4, icon: logo4, name: name4, price: price4},
-                    {rank: rank5, icon: logo5, name: name5, price: price5}] } = widgetCrypto
+        pRank1.textContent = `# ${rank1}`;
+        rank1Logo.innerHTML = `<img src="${logo1}" />`;
+        rank1Name.textContent = `${name1}`;
+        rank1Price.textContent = `${price1.toFixed(2)} $`;
 
-    pRank1.textContent = `# ${rank1}`;
-    rank1Logo.innerHTML = `<img src="${logo1}" />`;
-    rank1Name.textContent = `${name1}`;
-    rank1Price.textContent = `${price1.toFixed(2)} $`;
+        pRank2.textContent = `${rank2}`;
+        rank2Logo.innerHTML = `<img src="${logo2}" />`;
+        rank2Name.textContent = `${name2}`;
+        rank2Price.textContent = `${price2.toFixed(2)} $`;
 
-    pRank2.textContent = `${rank2}`;
-    rank2Logo.innerHTML = `<img src="${logo2}" />`;
-    rank2Name.textContent = `${name2}`;
-    rank2Price.textContent = `${price2.toFixed(2)} $`;
+        pRank3.textContent = `# ${rank3}`;
+        rank3Logo.innerHTML = `<img src="${logo3}" />`;
+        rank3Name.textContent = `${name3}`;
+        rank3Price.textContent = `${price3.toFixed(2)} $`;
 
-    pRank3.textContent = `# ${rank3}`;
-    rank3Logo.innerHTML = `<img src="${logo3}" />`;
-    rank3Name.textContent = `${name3}`;
-    rank3Price.textContent = `${price3.toFixed(2)} $`;
+        pRank4.textContent = `# ${rank4}`;
+        rank4Logo.innerHTML = `<img src="${logo4}" />`;
+        rank4Name.textContent = `${name4}`;
+        rank4Price.textContent = `${price4.toFixed(2)} $`;
 
-    pRank4.textContent = `# ${rank4}`;
-    rank4Logo.innerHTML = `<img src="${logo4}" />`;
-    rank4Name.textContent = `${name4}`;
-    rank4Price.textContent = `${price4.toFixed(2)} $`;
+        pRank5.textContent = `# ${rank5}`;
+        rank5Logo.innerHTML = `<img src="${logo5}" />`;
+        rank5Name.textContent = `${name5}`;
+        rank5Price.textContent = `${price5.toFixed(2)} $`;
+    } catch (error) {
+        console.log(error);
+    }
 
-    pRank5.textContent = `# ${rank5}`;
-    rank5Logo.innerHTML = `<img src="${logo5}" />`;
-    rank5Name.textContent = `${name5}`;
-    rank5Price.textContent = `${price5.toFixed(2)} $`;
 }
 
 widget()

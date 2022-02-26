@@ -231,9 +231,26 @@ nav input {
     width: 20px;
 }
 
-@media screen and (max-width:950px) {
+@media screen and (max-width:985px) {
     .widget__crypto {
         flex-direction: column;
         align-items: center;
+    }
+}
+
+@media screen and (max-width:650px) {
+    nav {
+        flex-direction: column;
+    }
+    .current__balance {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .text__balance {
+        text-align: center;
+    }
+    .history__transactions {
+        margin: auto;
     }
 }
