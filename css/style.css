@@ -3,6 +3,8 @@
 :root {
     --color-in: #599670;
     --color-out: #DF405A;
+    --color-bg-1: rgba(67,233,123, .75);
+    --color-bg-2: rgba(6, 187, 66, .75);
 }
 
 * {
@@ -12,7 +14,10 @@
 }
 
 body {
-    background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+    background-image: linear-gradient(to right bottom, var(--color-bg-1), var(--color-bg-2)), 
+                    url(../img/bg.jpg);
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     min-width: 320px;
     max-width: 1200px;
@@ -229,6 +234,7 @@ nav input {
 
 .crypto img {
     width: 20px;
+    height: 20px;
 }
 
 @media screen and (max-width:985px) {
