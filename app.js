@@ -35,6 +35,7 @@ const currentBalance = document.querySelector('.balance');
 const containerBalance = document.querySelector('.current__balance')
 const iconAng = `<img class="icon" src="img/icon.svg">`;
 const btnLogin = document.querySelector('.btn__login');
+const btnLogout = document.querySelector('.btn__logout');
 const inputUser = document.querySelector('.input__user');
 const inputPass = document.querySelector('.input__pass');
 const labelWelcome = document.querySelector('.welcome__message');
@@ -140,11 +141,22 @@ btnLogin.addEventListener('click', function(e) {
 
     // Clear input
     inputUser.value = inputPass.value = '';
+    document.querySelector(".login__form").style.display = "none";
     inputPass.blur();
+    btnLogout.style.display = "block"
 
     updateUI(currentUser);
 
 });
+
+btnLogout.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector(".login__form").style.display = "block";
+    labelWelcome.textContent = `Login in to get started`;
+    appUi.style.opacity = 0;
+    containerBalance.style.opacity = 0;
+    btnLogout.style.display = "none"
+})
 
 
 // Transfer between users
@@ -250,7 +262,7 @@ cryptoCoins.forEach(coin => {
                                             <p class="rank"># ${coin.rank}</p>
                                             <img src="${coin.icon}" alt="logo_crypto" />
                                             <p class="rank--name">${coin.name}</p>
-                                            <p class="rank--price">${coin.price.toFixed(2)} $</p>
+                                            <p class="rank--price">${coin.price.toFixed(2)} &dollar;</p>
                                         </div>
                                     `)
                         })
