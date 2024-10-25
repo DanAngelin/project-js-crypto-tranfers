@@ -4,7 +4,7 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
 $url = "https://openapiv1.coinstats.app/coins?limit=5";
-$apiKey = "mVbKwg7Za9fheYOno/a5YbB7YCE3QkmCPw2dF6Vbe8E=";
+$apiKey = "*************************";
 
 $options = [
     "http" => [
