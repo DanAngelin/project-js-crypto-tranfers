@@ -248,12 +248,12 @@ const rank5Name = document.querySelector('.rank_5--name');
 const rank5Price = document.querySelector('.rank_5--price');
 
 async function widget() {
-    const response = await fetch(`https://api.coinstats.app/public/v1/coins?skip=0&limit=5&currency=USD`);
+    const response = await fetch("api_crypto.php");
 
     const widgetCrypto = await response.json();
     try {
 
-const cryptoCoins = widgetCrypto.coins
+const cryptoCoins = widgetCrypto.result
 
 const cryptoItem = document.querySelector('.widget__crypto');
 cryptoCoins.forEach(coin => {
